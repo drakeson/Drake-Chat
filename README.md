@@ -6,9 +6,10 @@ FireChat is a Real Time Chat App with Cloud Firestore & Swift 5 | MVVM
 
 
 ```bash
-You will learn how to build a real time chat application using Firestore and Swift, ready to be published on the App Store. 
-Throughout the process, you will develop high level programming, app design and app development skills.  
-We will be building this without the use of storyboards, fully programmatically.
+You will learn how to build a real time chat application using Firestore and Swift, 
+ready to be published on the App Store. Throughout the process, you will develop 
+high level programming, app design and app development skills.  We will be building 
+this without the use of storyboards, fully programmatically.
 ```
 
 ## What will you learn? 
