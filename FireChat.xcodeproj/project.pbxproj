@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B6B723B7F010201CFB16592 /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132A49109E87DBC330D53589 /* Pods_FireChat.framework */; };
 		6FD30DE6261C6D130075553C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30DE5261C6D130075553C /* AppDelegate.swift */; };
 		6FD30DE8261C6D130075553C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30DE7261C6D130075553C /* SceneDelegate.swift */; };
 		6FD30DEA261C6D130075553C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30DE9261C6D130075553C /* ViewController.swift */; };
@@ -14,9 +15,18 @@
 		6FD30DEF261C6D170075553C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FD30DEE261C6D170075553C /* Assets.xcassets */; };
 		6FD30DF2261C6D170075553C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FD30DF0261C6D170075553C /* LaunchScreen.storyboard */; };
 		6FD30E01261C72FF0075553C /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30E00261C72FF0075553C /* ConversationsController.swift */; };
+		6FD30E06261CC4FD0075553C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30E05261CC4FD0075553C /* LoginVC.swift */; };
+		6FD30E09261CC5130075553C /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30E08261CC5130075553C /* RegistrationVC.swift */; };
+		6FD30E0C261CD28E0075553C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30E0B261CD28E0075553C /* Extensions.swift */; };
+		6FD30E18261D13BE0075553C /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30E17261D13BD0075553C /* InputContainerView.swift */; };
+		6FD30E1D261D1E470075553C /* CustomTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30E1C261D1E470075553C /* CustomTextFields.swift */; };
+		6FD30E20261DF8590075553C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30E1F261DF8590075553C /* LoginViewModel.swift */; };
+		6FD30E23261E5E8F0075553C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD30E22261E5E8F0075553C /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		132A49109E87DBC330D53589 /* Pods_FireChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48C4DA64F15EDE6347809103 /* Pods-FireChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.release.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.release.xcconfig"; sourceTree = "<group>"; };
 		6FD30DE2261C6D130075553C /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD30DE5261C6D130075553C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FD30DE7261C6D130075553C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +36,14 @@
 		6FD30DF1261C6D170075553C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FD30DF3261C6D170075553C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FD30E00261C72FF0075553C /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
+		6FD30E05261CC4FD0075553C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6FD30E08261CC5130075553C /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		6FD30E0B261CD28E0075553C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		6FD30E17261D13BD0075553C /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
+		6FD30E1C261D1E470075553C /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
+		6FD30E1F261DF8590075553C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		6FD30E22261E5E8F0075553C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		C98E659D05465EACF1D291AD /* Pods-FireChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.debug.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +51,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B6B723B7F010201CFB16592 /* Pods_FireChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DB83FBD95B5FED270663F43 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C98E659D05465EACF1D291AD /* Pods-FireChat.debug.xcconfig */,
+				48C4DA64F15EDE6347809103 /* Pods-FireChat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6FD30DD9261C6D130075553C = {
 			isa = PBXGroup;
 			children = (
 				6FD30DE4261C6D130075553C /* FireChat */,
 				6FD30DE3261C6D130075553C /* Products */,
+				4DB83FBD95B5FED270663F43 /* Pods */,
+				882C49B132E1BD448D6A7B12 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,13 +94,6 @@
 				6FD30DFC261C6D350075553C /* Controllers */,
 				6FD30DFB261C6D330075553C /* APIs */,
 				6FD30DFA261C6D250075553C /* Utils */,
-				6FD30DE5261C6D130075553C /* AppDelegate.swift */,
-				6FD30DE7261C6D130075553C /* SceneDelegate.swift */,
-				6FD30DE9261C6D130075553C /* ViewController.swift */,
-				6FD30DEB261C6D130075553C /* Main.storyboard */,
-				6FD30DEE261C6D170075553C /* Assets.xcassets */,
-				6FD30DF0261C6D170075553C /* LaunchScreen.storyboard */,
-				6FD30DF3261C6D170075553C /* Info.plist */,
 			);
 			path = FireChat;
 			sourceTree = "<group>";
@@ -78,6 +101,10 @@
 		6FD30DFA261C6D250075553C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6FD30DF3261C6D170075553C /* Info.plist */,
+				6FD30DE5261C6D130075553C /* AppDelegate.swift */,
+				6FD30DE7261C6D130075553C /* SceneDelegate.swift */,
+				6FD30E0B261CD28E0075553C /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -92,6 +119,8 @@
 		6FD30DFC261C6D350075553C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6FD30E04261CC4BB0075553C /* Authentication */,
+				6FD30DE9261C6D130075553C /* ViewController.swift */,
 				6FD30E00261C72FF0075553C /* ConversationsController.swift */,
 			);
 			path = Controllers;
@@ -100,6 +129,8 @@
 		6FD30DFD261C6D380075553C /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				6FD30E1F261DF8590075553C /* LoginViewModel.swift */,
+				6FD30E22261E5E8F0075553C /* RegisterViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -107,6 +138,11 @@
 		6FD30DFE261C6D3A0075553C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6FD30DF0261C6D170075553C /* LaunchScreen.storyboard */,
+				6FD30DEE261C6D170075553C /* Assets.xcassets */,
+				6FD30DEB261C6D130075553C /* Main.storyboard */,
+				6FD30E17261D13BD0075553C /* InputContainerView.swift */,
+				6FD30E1C261D1E470075553C /* CustomTextFields.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,6 +154,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		6FD30E04261CC4BB0075553C /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				6FD30E05261CC4FD0075553C /* LoginVC.swift */,
+				6FD30E08261CC5130075553C /* RegistrationVC.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		882C49B132E1BD448D6A7B12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				132A49109E87DBC330D53589 /* Pods_FireChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FD30DF6261C6D170075553C /* Build configuration list for PBXNativeTarget "FireChat" */;
 			buildPhases = (
+				E6ECEB5C068E1E93FD4B9D62 /* [CP] Check Pods Manifest.lock */,
 				6FD30DDE261C6D130075553C /* Sources */,
 				6FD30DDF261C6D130075553C /* Frameworks */,
 				6FD30DE0261C6D130075553C /* Resources */,
+				8E9175822F45E6F49A9E3416 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,15 +238,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8E9175822F45E6F49A9E3416 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FireChat/Pods-FireChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FireChat/Pods-FireChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FireChat/Pods-FireChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6ECEB5C068E1E93FD4B9D62 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FireChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6FD30DDE261C6D130075553C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6FD30DEA261C6D130075553C /* ViewController.swift in Sources */,
+				6FD30E18261D13BE0075553C /* InputContainerView.swift in Sources */,
+				6FD30E09261CC5130075553C /* RegistrationVC.swift in Sources */,
+				6FD30E1D261D1E470075553C /* CustomTextFields.swift in Sources */,
+				6FD30E23261E5E8F0075553C /* RegisterViewModel.swift in Sources */,
 				6FD30DE6261C6D130075553C /* AppDelegate.swift in Sources */,
 				6FD30E01261C72FF0075553C /* ConversationsController.swift in Sources */,
 				6FD30DE8261C6D130075553C /* SceneDelegate.swift in Sources */,
+				6FD30E06261CC4FD0075553C /* LoginVC.swift in Sources */,
+				6FD30E20261DF8590075553C /* LoginViewModel.swift in Sources */,
+				6FD30E0C261CD28E0075553C /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,12 +439,13 @@
 		};
 		6FD30DF7261C6D170075553C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C98E659D05465EACF1D291AD /* Pods-FireChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DXA5M4234Y;
-				INFOPLIST_FILE = FireChat/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FireChat/Utils/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -354,12 +459,13 @@
 		};
 		6FD30DF8261C6D170075553C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48C4DA64F15EDE6347809103 /* Pods-FireChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DXA5M4234Y;
-				INFOPLIST_FILE = FireChat/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FireChat/Utils/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
