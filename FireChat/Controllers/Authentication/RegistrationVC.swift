@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationVC: UIViewController {
     
     // MARK: - Properties
     
     private var registrationVM = RegisterViewModel()
-    
+    private var profileImage: UIImage?
     private let addImage: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
         button.tintColor = .white
+        button.imageView?.contentMode = .scaleAspectFill
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(selectPhoto), for: .touchUpInside)
         return button
@@ -47,6 +49,7 @@ class RegistrationVC: UIViewController {
         button.setHeight(height: 40)
         button.setTitleColor(UIColor.white, for: .normal)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         return button
     }()
     
@@ -104,6 +107,26 @@ class RegistrationVC: UIViewController {
         checkFormStatus()
     }
     
+    @objc func registerUser(){
+        guard let username = nameTextView.text else { return }
+        guard let email = emailTextView.text else { return }
+        guard let password = passwordTextView.text else { return }
+        guard let proImage = profileImage else { return }
+        
+        showLoader(true, withText: "Registering You")
+        let credentials = RegistrationCredentials(name: username, email: email, password: password, profileImage: proImage)
+        AuthService.shared.createUser(credentials: credentials) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                self.showLoader(false)
+                return
+            } else {
+                self.showLoader(false)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
     // MARK: - Helpers
     
     func configureUI(){
@@ -138,6 +161,7 @@ class RegistrationVC: UIViewController {
 extension RegistrationVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
+        profileImage = image
         addImage.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         addImage.layer.borderColor = UIColor.white.cgColor
         addImage.layer.borderWidth = 3.0

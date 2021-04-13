@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import JGProgressHUD
 
 protocol AuthenticationControllerProtocal {
     func checkFormStatus()
@@ -95,7 +97,21 @@ class LoginVC: UIViewController {
     }
     
     @objc func getLoginInfo(){
+        guard let email = emailTextView.text else { return }
+        guard let password = passwordTextView.text else { return }
         
+        showLoader(true, withText: "Logging In")
+        
+        AuthService.shared.logUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                self.showLoader(false)
+                return
+            } else {
+                self.showLoader(false)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     

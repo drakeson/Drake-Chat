@@ -6,6 +6,11 @@ target 'FireChat' do
   use_frameworks!
 
   # Pods for FireChat
-  pod "JGProgressHUD"
+  pod 'JGProgressHUD'
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'SDWebImage'
 
 end

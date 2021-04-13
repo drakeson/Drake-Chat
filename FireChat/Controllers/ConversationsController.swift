@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifer = "ConversationsCell"
 
@@ -14,7 +15,6 @@ class ConversationsController: UIViewController {
     
     // MARK: - Properties
     private let tableView = UITableView()
-    
     
     
     // MARK: - Lifecycle
@@ -27,9 +27,28 @@ class ConversationsController: UIViewController {
     // MARK: - Selectors
     @objc func showProfile()  {
         print("dskbdjkb")
+        logOut()
+    }
+    // MARK: - API
+    func authenticateUser(){
+        if Auth.auth().currentUser?.uid == nil {
+            presentLoginScreen()
+        } else {
+            print("User ID: \(Auth.auth().currentUser?.uid)")
+        }
     }
     
+    func logOut() { do { try Auth.auth().signOut() } catch { print("Signing Out") } }
+    
     // MARK: - Helpers
+    
+    func presentLoginScreen(){
+        DispatchQueue.main.async {
+            let nav = UINavigationController(rootViewController: LoginVC())
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
+    }
     
     func configureUI(){
         view.backgroundColor = .white
@@ -39,6 +58,7 @@ class ConversationsController: UIViewController {
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showProfile))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        authenticateUser()
     }
     
     func configureTableView() {
