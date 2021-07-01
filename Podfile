@@ -12,5 +12,5 @@ target 'FireChat' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'SDWebImage'
-
+  pod 'SPAlert'
 end

@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import JGProgressHUD
+import SPAlert
 
 protocol AuthenticationControllerProtocal {
     func checkFormStatus()
@@ -104,6 +105,7 @@ class LoginVC: UIViewController {
         
         AuthService.shared.logUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
+                SPAlert.present(title: "Error", message: "\(error.localizedDescription)", preset: .error)
                 print("Error: \(error.localizedDescription)")
                 self.showLoader(false)
                 return

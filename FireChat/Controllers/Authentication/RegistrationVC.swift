@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SPAlert
 
 class RegistrationVC: UIViewController {
     
@@ -117,6 +118,7 @@ class RegistrationVC: UIViewController {
         let credentials = RegistrationCredentials(name: username, email: email, password: password, profileImage: proImage)
         AuthService.shared.createUser(credentials: credentials) { (error) in
             if let error = error {
+                SPAlert.present(title: "Error", message: "\(error.localizedDescription)", preset: .error)
                 print("Error: \(error.localizedDescription)")
                 self.showLoader(false)
                 return

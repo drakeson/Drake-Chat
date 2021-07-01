@@ -8,13 +8,24 @@
 import UIKit
 import Firebase
 
-private let reuseIdentifer = "ConversationsCell"
+private let reuseIdentifier = "ConversationsCell"
 
 class ConversationsController: UIViewController {
     
     
     // MARK: - Properties
     private let tableView = UITableView()
+    
+    
+    private let newMessageButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.backgroundColor = .black
+        button.tintColor = .white
+        button.imageView?.setDimensions(height: 24, width: 24)
+        button.addTarget(self, action: #selector(showNewMesageController), for: .touchUpInside)
+        return button
+    }()
     
     
     // MARK: - Lifecycle
@@ -26,19 +37,41 @@ class ConversationsController: UIViewController {
     }
     // MARK: - Selectors
     @objc func showProfile()  {
-        print("dskbdjkb")
         logOut()
     }
+    
+    
+    @objc func showNewMesageController(){
+        let nav = UINavigationController(rootViewController: NewMesageController())
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+    }
+    
     // MARK: - API
     func authenticateUser(){
         if Auth.auth().currentUser?.uid == nil {
             presentLoginScreen()
         } else {
-            print("User ID: \(Auth.auth().currentUser?.uid)")
+            print("User ID: \(String(describing: Auth.auth().currentUser?.uid))")
         }
     }
     
-    func logOut() { do { try Auth.auth().signOut() } catch { print("Signing Out") } }
+    func logOut() {
+        showLoader(true, withText: "Signing Out")
+        do {
+            try Auth.auth().signOut()
+            showLoader(false)
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginVC())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        } catch {
+            showLoader(false)
+            print("Signing Out")
+        }
+        
+    }
     
     // MARK: - Helpers
     
@@ -53,18 +86,23 @@ class ConversationsController: UIViewController {
     func configureUI(){
         view.backgroundColor = .white
         
-        configureNavigationBar()
+        configureNavigationBar(withTitle: "Drake Chat", prefersLargeTitles: true)
         configureTableView()
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showProfile))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         authenticateUser()
+        
+        
+        view.addSubview(newMessageButton)
+        newMessageButton.layer.cornerRadius = 56 / 2
+        newMessageButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingBottom: 16, paddingRight: 24, width: 56, height: 56)
     }
     
     func configureTableView() {
         tableView.backgroundColor = .clear
         tableView.rowHeight = 80
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifer)
+        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -74,26 +112,11 @@ class ConversationsController: UIViewController {
          
     }
     
-    func configureNavigationBar(){
-        let apperance = UINavigationBarAppearance()
-        apperance.configureWithOpaqueBackground()
-        apperance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        apperance.backgroundColor = #colorLiteral(red: 0.1843137255, green: 0.1843137255, blue: 0.1843137255, alpha: 1)
-        
-        navigationController?.navigationBar.standardAppearance = apperance
-        navigationController?.navigationBar.compactAppearance = apperance
-        navigationController?.navigationBar.scrollEdgeAppearance = apperance
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Drake Chat"
-        navigationController?.navigationBar.barTintColor = UIColor.white
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationController?.overrideUserInterfaceStyle = .dark
-        
-    }
+    
     
 }
-//
+
+//MARK:- UITableViewDataSource
 
 extension ConversationsController:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,11 +124,10 @@ extension ConversationsController:  UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifer, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-        cell.textLabel?.text = "Text Cell: \(1 + indexPath.row)"
-        cell.textLabel?.textColor = #colorLiteral(red: 0.1843137255, green: 0.1843137255, blue: 0.1843137255, alpha: 1)
+        
         return cell
     }
     
