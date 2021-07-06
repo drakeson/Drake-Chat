@@ -15,6 +15,7 @@ class ConversationsController: UIViewController {
     
     // MARK: - Properties
     private let tableView = UITableView()
+    private var conversations = [Conversation]()
     
     
     private let newMessageButton: UIButton = {
@@ -33,12 +34,17 @@ class ConversationsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
+        authenticateUser()
+        fetchConversations()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar(withTitle: "Drake Chat", prefersLargeTitles: true)
+    }
+    
     // MARK: - Selectors
-    @objc func showProfile()  {
-        logOut()
-    }
+    @objc func showProfile()  { logOut() }
     
     
     @objc func showNewMesageController(){
@@ -50,6 +56,14 @@ class ConversationsController: UIViewController {
     }
     
     // MARK: - API
+    func fetchConversations(){
+        Service.fetchConversations { conversations in
+            self.conversations = conversations
+            self.tableView.reloadData()
+        }
+    }
+    
+    
     func authenticateUser(){
         if Auth.auth().currentUser?.uid == nil {
             presentLoginScreen()
@@ -88,13 +102,10 @@ class ConversationsController: UIViewController {
     func configureUI(){
         view.backgroundColor = .white
         
-        configureNavigationBar(withTitle: "Drake Chat", prefersLargeTitles: true)
         configureTableView()
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showProfile))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-        authenticateUser()
-        
         
         view.addSubview(newMessageButton)
         newMessageButton.layer.cornerRadius = 56 / 2
@@ -104,7 +115,7 @@ class ConversationsController: UIViewController {
     func configureTableView() {
         tableView.backgroundColor = .clear
         tableView.rowHeight = 80
-        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ConversationCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -114,7 +125,10 @@ class ConversationsController: UIViewController {
          
     }
     
-    
+    func showChatController(forUser user: User){
+        let controller = ChatController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
 }
 
@@ -122,14 +136,14 @@ class ConversationsController: UIViewController {
 
 extension ConversationsController:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ConversationCell
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-        
+        cell.conversation = conversations[indexPath.row]
         return cell
     }
     
@@ -139,14 +153,14 @@ extension ConversationsController:  UITableViewDataSource {
 extension ConversationsController : UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print(indexPath.row)
+    showChatController(forUser: conversations[indexPath.row].user)
   }
 }
 //MARK: - NewMessageControllerDelegate
 extension ConversationsController: NewMessageControllerDelegate {
     func controller(_ controller: NewMessageController, wantsToStartChatWith user: User) {
         controller.dismiss(animated: true, completion: nil)
-        let chat = ChatController(user: user)
-        navigationController?.pushViewController(chat, animated: true)
+        showChatController(forUser: user)
     }
     
     

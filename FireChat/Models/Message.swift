@@ -8,12 +8,6 @@
 import Foundation
 import Firebase
 
-
-//struct Msg {
-//    let text : String
-//    let isFromCurrentUser : Bool
-//}
-
 struct Message {
   let text : String
   let toId : String

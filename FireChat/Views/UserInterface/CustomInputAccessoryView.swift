@@ -16,7 +16,7 @@ class CustomInputAccessoryView: UIView {
   
   weak var delegate: CustomInputAccessoryViewDelegate?
   
-  lazy var messageInputTextView: UITextView = {
+  private lazy var messageInputTextView: UITextView = {
     let tv = UITextView()
     tv.font = UIFont.systemFont(ofSize: 16)
     tv.backgroundColor = .white
@@ -29,7 +29,7 @@ class CustomInputAccessoryView: UIView {
     let button = UIButton(type: .system)
     button.setTitle("Send", for: .normal)
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-    button.setTitleColor(.black, for: .normal)
+    button.setTitleColor(#colorLiteral(red: 0.8566655517, green: 0.1327306926, blue: 0.1788807511, alpha: 1), for: .normal)
     button.addTarget(self, action: #selector(handleSendMessage), for: .touchUpInside)
     return button
   }()
